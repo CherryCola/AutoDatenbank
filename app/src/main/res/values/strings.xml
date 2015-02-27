@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AutoDatenbank</string>
+
+    <string name="button_show">Anzeigen</string>
+    <string name="opt_exit">Beenden</string>
+    <string name="opt_addCar">Auto hinzufügen</string>
+    <string name="textView_manufacturer">Hersteller</string>
+    <string name="textView_model">Model</string>
+    <string name="textView_constructionyear">Baujahr</string>
+    <string name="textView_horsepower">PS</string>
+</resources>
