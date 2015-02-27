@@ -44,7 +44,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText_constructionyear" />
+            android:id="@+id/editText_constructionyear"
+            android:inputType="number" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -56,6 +57,15 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText_horsepower" />
+            android:id="@+id/editText_horsepower"
+            android:inputType="number" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_add_car"
+            android:id="@+id/button_add_car"
+            android:onClick="onClickAddCar"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 </RelativeLayout>

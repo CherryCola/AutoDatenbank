@@ -2,10 +2,18 @@
     <string name="app_name">AutoDatenbank</string>
 
     <string name="button_show">Anzeigen</string>
+    <string name="button_add_car">Hinzufügen</string>
+
     <string name="opt_exit">Beenden</string>
     <string name="opt_addCar">Auto hinzufügen</string>
+    <string name="opt_abort_adding_car">Abbrechen</string>
+
+
     <string name="textView_manufacturer">Hersteller</string>
     <string name="textView_model">Model</string>
     <string name="textView_constructionyear">Baujahr</string>
     <string name="textView_horsepower">PS</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 </resources>

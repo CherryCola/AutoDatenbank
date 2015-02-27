@@ -47,9 +47,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public void addCar(Car car) {
 
         SQLiteDatabase db = this.getWritableDatabase();
-
+        //No ID needed, because of autoincrement
         ContentValues values = new ContentValues();
-        values.put(COLUMN_ID, car.getId());
         values.put(COLUMN_MANUFACTURER, car.getManufacturer());
         values.put(COLUMN_MODEL, car.getModel());
         values.put(COLUMN_CONSTRUCTIONYEAR, car.getConstructionyear());

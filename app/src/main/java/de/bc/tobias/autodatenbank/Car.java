@@ -16,20 +16,11 @@ public class Car {
 
     //Hallo Tobi
 
-    public Car(long id, String manufacturer, String model, long constructionyear, long horsepower) {
-        this.id = id;
+    public Car(String manufacturer, String model, long constructionyear, long horsepower) {
         this.manufacturer = manufacturer;
         this.model = model;
         this.constructionyear = constructionyear;
         this.horsepower = horsepower;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getManufacturer() {

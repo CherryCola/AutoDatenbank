@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/opt_abort_adding_car"
+        android:title="@string/opt_abort_adding_car" />
+</menu>

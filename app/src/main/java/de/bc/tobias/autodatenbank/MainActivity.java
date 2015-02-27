@@ -1,7 +1,8 @@
 package de.bc.tobias.autodatenbank;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -30,7 +31,8 @@ public class MainActivity extends ActionBarActivity {
                 finish();
                 break;
             case R.id.opt_addCar:
-                //new activity
+                final Intent intent = new Intent(this, AddCarActivity.class);
+                startActivity(intent);
                 break;
             default:
         }
