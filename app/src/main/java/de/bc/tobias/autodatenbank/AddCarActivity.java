@@ -18,9 +18,8 @@ public class AddCarActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_car);
-
         db = new MySQLiteHelper(this);
-    }
+}
 
     /*
     TODO: Clear the editText or finish the activity

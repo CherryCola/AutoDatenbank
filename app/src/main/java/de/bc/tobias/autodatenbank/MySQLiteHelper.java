@@ -2,6 +2,7 @@ package de.bc.tobias.autodatenbank;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -42,6 +43,21 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CARS);
         Log.d("Accuracy", "deleted");
         this.onCreate(db);
+    }
+
+
+    public Car getManufactures(String name){
+
+           //db generate only read
+        SQLiteDatabase db = this.getReadableDatabase();
+        //sql querry search for MANUFACTURER
+        Cursor result = db.query(false,TABLE_CARS, new String[] { COLUMN_ID,COLUMN_MANUFACTURER,
+                        COLUMN_MODEL, COLUMN_CONSTRUCTIONYEAR,COLUMN_HORSEPOWER }, COLUMN_MANUFACTURER + "=?",
+                new String[] { (name) }, null, null, null, null);
+        //Write the result in Object car and return it
+        Car car = new Car((result.getLong(0)), result.getString(1), result.getString(2),result.getLong(3),result.getLong(4));
+
+        return car;
     }
 
     public void addCar(Car car) {

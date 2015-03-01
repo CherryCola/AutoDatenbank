@@ -14,8 +14,6 @@ public class Car {
 
     }
 
-    //Hallo Tobi
-
     public Car(String manufacturer, String model, long constructionyear, long horsepower) {
         this.manufacturer = manufacturer;
         this.model = model;
@@ -23,6 +21,13 @@ public class Car {
         this.horsepower = horsepower;
     }
 
+    public Car(long id,String manufacturer, String model, long constructionyear, long horsepower) {
+        this.id=id;
+        this.manufacturer = manufacturer;
+        this.model = model;
+        this.constructionyear = constructionyear;
+        this.horsepower = horsepower;
+    }
     public String getManufacturer() {
         return manufacturer;
     }
