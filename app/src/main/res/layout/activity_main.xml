@@ -16,7 +16,7 @@
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/spinner_hersteller"
+            android:id="@+id/spinner_manufacturer"
             android:layout_gravity="center_horizontal"
             android:entryValues="@array/marke_werte" />
 
@@ -29,13 +29,13 @@
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/spinner_baujahr"
+            android:id="@+id/spinner_constructionyear"
             android:layout_gravity="center_horizontal" />
 
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/spinner_motorisierung"
+            android:id="@+id/spinner_horsepower"
             android:layout_gravity="center_horizontal" />
 
         <Button

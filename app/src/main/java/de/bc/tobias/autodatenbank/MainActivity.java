@@ -3,8 +3,11 @@ package de.bc.tobias.autodatenbank;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -13,10 +16,28 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
+    Spinner spinner_manufacturer;
+    Spinner spinner_model;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        spinner_manufacturer = (Spinner) findViewById(R.id.spinner_manufacturer);
+        spinner_model = (Spinner) findViewById(R.id.spinner_model);
+        spinner_manufacturer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    String result = spinner_manufacturer.getItemAtPosition(position).toString();
+                    Log.d("Accuracy", "Listener aktiv");
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         loadSpinnerData();
     }
 
@@ -51,7 +72,7 @@ public class MainActivity extends ActionBarActivity {
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner spinner = (Spinner) findViewById(R.id.spinner_hersteller);
-        spinner.setAdapter(dataAdapter);
+
+        spinner_manufacturer.setAdapter(dataAdapter);
     }
 }
