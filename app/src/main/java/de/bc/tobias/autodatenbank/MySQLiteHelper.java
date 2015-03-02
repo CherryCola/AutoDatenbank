@@ -67,6 +67,23 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     }
 
+    public List<String> getconstructionyear(String search_word){
+        ArrayList<String> constructionyears = new ArrayList<String>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor result = db.query(false,TABLE_CARS,new String[]{COLUMN_CONSTRUCTIONYEAR}, COLUMN_MODEL + "= ?",
+                new String[]{search_word},
+                null,null,null,null);
+
+        while(result.moveToNext()){
+            constructionyears.add(new String(result.getString(0)));
+            System.out.println(result.getString(0));
+        }
+        result.close();
+        return constructionyears;
+    }
+
     public List<String> getModels(String search_word){
         ArrayList<String> models = new ArrayList<String>();
 

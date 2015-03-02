@@ -18,20 +18,27 @@ public class MainActivity extends ActionBarActivity {
 
     Spinner spinner_manufacturer;
     Spinner spinner_model;
+    Spinner spinner_constructionyear;
+    Spinner spinner_horsepower;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         spinner_manufacturer = (Spinner) findViewById(R.id.spinner_manufacturer);
         spinner_model = (Spinner) findViewById(R.id.spinner_model);
+        spinner_constructionyear = (Spinner) findViewById(R.id.spinner_constructionyear);
+        spinner_horsepower = (Spinner) findViewById(R.id.spinner_horsepower);
+
+        loadSpinnerManufacturer();
+
         spinner_manufacturer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String result = spinner_manufacturer.getItemAtPosition(position).toString();
                 Log.d("Accuracy", "Listener aktiv");
-
                 loadSpinnerModel(result);
-
             }
 
             @Override
@@ -40,7 +47,20 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        loadSpinnerData();
+        spinner_model.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String result = spinner_model.getItemAtPosition(position).toString();
+                Log.d("Accuracy", "Listener aktiv");
+                loadSpinnerconstructionyear(result);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+
+        });
     }
 
 
@@ -67,6 +87,13 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    public void loadSpinnerconstructionyear(String search_word){
+        MySQLiteHelper db = new MySQLiteHelper(this);
+        List<String> list = db.getconstructionyear(search_word);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_constructionyear.setAdapter(dataAdapter);
+    }
 
     public void loadSpinnerModel(String search_word){
         MySQLiteHelper db = new MySQLiteHelper(this);
@@ -76,7 +103,7 @@ public class MainActivity extends ActionBarActivity {
         spinner_model.setAdapter(dataAdapter);
     }
 
-    public void loadSpinnerData(){
+    public void loadSpinnerManufacturer(){
         MySQLiteHelper db = new MySQLiteHelper(this);
         List<String> list = db.getManufacturers();
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,list);
