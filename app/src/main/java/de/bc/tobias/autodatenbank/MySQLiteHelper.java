@@ -7,11 +7,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Tobias on 27.02.2015.
  */
 public class MySQLiteHelper extends SQLiteOpenHelper {
-    public static final String TABLE_CARS = "positions";
+    public static final String TABLE_CARS = "cars";
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_MANUFACTURER = "manufacturer";
     public static final String COLUMN_MODEL = "model";
@@ -19,7 +22,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_HORSEPOWER = "horsepower";
 
     // Erstellt die Datenbank
-    private static final String DATABASE_NAME = "positions.db";
+    private static final String DATABASE_NAME = "cars.db";
     private static final int DATABASE_VERSION = 1;
 
     // Erstellt die Tabelle
@@ -46,18 +49,22 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     }
 
 
-    public Car getManufactures(String name){
-
+    public List<String> getManufacturers(){
+        ArrayList<String> manufacturers = new ArrayList<String>();
            //db generate only read
         SQLiteDatabase db = this.getReadableDatabase();
-        //sql querry search for MANUFACTURER
-        Cursor result = db.query(false,TABLE_CARS, new String[] { COLUMN_ID,COLUMN_MANUFACTURER,
-                        COLUMN_MODEL, COLUMN_CONSTRUCTIONYEAR,COLUMN_HORSEPOWER }, COLUMN_MANUFACTURER + "=?",
-                new String[] { (name) }, null, null, null, null);
+        //sql querry search for MANUFACTURERS
+        Cursor result = db.query(true,TABLE_CARS, new String[] { COLUMN_MANUFACTURER}, null,
+                null, null, null, null, null);
         //Write the result in Object car and return it
-        Car car = new Car((result.getLong(0)), result.getString(1), result.getString(2),result.getLong(3),result.getLong(4));
+        while(result.moveToNext()){
+            manufacturers.add(new String(result.getString(0)));
+            System.out.println(result.getString(0));
+            Log.d("Accuracy", "fährt");
+        }
+        result.close();
+        return manufacturers;
 
-        return car;
     }
 
     public void addCar(Car car) {
