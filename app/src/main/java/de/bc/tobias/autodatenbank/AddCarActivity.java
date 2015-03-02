@@ -38,6 +38,7 @@ public class AddCarActivity extends Activity {
         car.setHorsepower(Integer.parseInt(editText_horsepower.getText().toString()));
 
         db.addCar(car);
+        finish();
     }
 
     @Override

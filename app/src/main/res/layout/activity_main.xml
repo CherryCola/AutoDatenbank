@@ -18,7 +18,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/spinner_hersteller"
             android:layout_gravity="center_horizontal"
-            android:entries="@array/marke_anzeige"
             android:entryValues="@array/marke_werte" />
 
         <Spinner
