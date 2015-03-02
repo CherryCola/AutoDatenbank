@@ -27,8 +27,10 @@ public class MainActivity extends ActionBarActivity {
         spinner_manufacturer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    String result = spinner_manufacturer.getItemAtPosition(position).toString();
-                    Log.d("Accuracy", "Listener aktiv");
+                String result = spinner_manufacturer.getItemAtPosition(position).toString();
+                Log.d("Accuracy", "Listener aktiv");
+
+                loadSpinnerModel(result);
 
             }
 
@@ -66,13 +68,19 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void loadSpinnerModel(String search_word){
+        MySQLiteHelper db = new MySQLiteHelper(this);
+        List<String> list = db.getModels(search_word);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_model.setAdapter(dataAdapter);
+    }
+
     public void loadSpinnerData(){
         MySQLiteHelper db = new MySQLiteHelper(this);
         List<String> list = db.getManufacturers();
-
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         spinner_manufacturer.setAdapter(dataAdapter);
     }
 }

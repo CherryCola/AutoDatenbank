@@ -54,7 +54,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
            //db generate only read
         SQLiteDatabase db = this.getReadableDatabase();
         //sql querry search for MANUFACTURERS
-        Cursor result = db.query(true,TABLE_CARS, new String[] { COLUMN_MANUFACTURER}, null,
+        Cursor result = db.query(true, TABLE_CARS, new String[]{COLUMN_MANUFACTURER}, null,
                 null, null, null, null, null);
         //Write the result in Object car and return it
         while(result.moveToNext()){
@@ -66,6 +66,23 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         return manufacturers;
 
     }
+
+    public List<String> getModels(String search_word){
+        ArrayList<String> models = new ArrayList<String>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor result = db.query(false,TABLE_CARS,new String[]{COLUMN_MODEL}, COLUMN_MANUFACTURER + "= ?",
+                new String[]{search_word},
+                null,null,null,null);
+
+        while(result.moveToNext()){
+            models.add(new String(result.getString(0)));
+            System.out.println(result.getString(0));
+        }
+        result.close();
+        return models;
+        }
 
     public void addCar(Car car) {
 
