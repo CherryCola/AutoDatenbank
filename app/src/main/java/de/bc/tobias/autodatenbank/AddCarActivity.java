@@ -21,9 +21,6 @@ public class AddCarActivity extends Activity {
         db = new MySQLiteHelper(this);
 }
 
-    /*
-    TODO: Clear the editText or finish the activity
-     */
     public void onClickAddCar (View button) {
         final Car car = new Car();
 

@@ -43,6 +43,7 @@
             android:layout_height="wrap_content"
             android:text="@string/button_show"
             android:id="@+id/button_show"
+            android:onClick="onClickShowCar"
             android:layout_gravity="center_horizontal" />
 
     </LinearLayout>

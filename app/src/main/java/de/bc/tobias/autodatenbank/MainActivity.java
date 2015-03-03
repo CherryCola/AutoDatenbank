@@ -48,12 +48,12 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        spinner_model.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+        spinner_model.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String result = spinner_model.getItemAtPosition(position).toString();
                 Log.d("Accuracy", "Listener aktiv");
-                loadSpinnerconstructionyear(result);
+                loadSpinnerConstructionyear(result);
             }
 
             @Override
@@ -68,7 +68,7 @@ public class MainActivity extends ActionBarActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String result = spinner_constructionyear.getItemAtPosition(position).toString();
                 Log.d("Accuracy", "Listener aktiv");
-                loadSpinnerhorsepower(result);
+                loadSpinnerHorsepower(result);
             }
 
             @Override
@@ -78,6 +78,9 @@ public class MainActivity extends ActionBarActivity {
         });
     }
 
+    public void onClickAddCar (View button) {
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -103,29 +106,28 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void loadSpinnerhorsepower(String search_word){
-        List<String> list = db.gethorsepower(search_word);
+    public void loadSpinnerHorsepower(String search_word) {
+        List<String> list = db.getHorsepower(search_word);
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_horsepower.setAdapter(dataAdapter);
-
     }
 
-    public void loadSpinnerconstructionyear(String search_word){
-        List<String> list = db.getconstructionyear(search_word);
+    public void loadSpinnerConstructionyear(String search_word) {
+        List<String> list = db.getConstructionyear(search_word);
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_constructionyear.setAdapter(dataAdapter);
     }
 
-    public void loadSpinnerModel(String search_word){
+    public void loadSpinnerModel(String search_word) {
         List<String> list = db.getModels(search_word);
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_model.setAdapter(dataAdapter);
     }
 
-    public void loadSpinnerManufacturer(){
+    public void loadSpinnerManufacturer() {
         List<String> list = db.getManufacturers();
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

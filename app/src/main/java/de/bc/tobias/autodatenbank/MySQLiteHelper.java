@@ -67,7 +67,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-    public List<String> gethorsepower(String search_word){
+    public List<String> getHorsepower(String search_word){
         ArrayList<String> gethorsepowers = new ArrayList<String>();
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -84,7 +84,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         return gethorsepowers;
     }
 
-    public List<String> getconstructionyear(String search_word){
+    public List<String> getConstructionyear(String search_word){
         ArrayList<String> constructionyears = new ArrayList<String>();
 
         SQLiteDatabase db = this.getReadableDatabase();

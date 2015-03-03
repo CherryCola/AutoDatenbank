@@ -17,6 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddCarActivity" />
+        <activity
+            android:name=".ShowCarActivity"
+            android:label="@string/title_activity_show_car" >
+        </activity>
     </application>
 
 </manifest>
