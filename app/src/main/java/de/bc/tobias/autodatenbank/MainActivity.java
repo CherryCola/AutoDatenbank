@@ -16,6 +16,7 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
+    MySQLiteHelper db = new MySQLiteHelper(this);
     Spinner spinner_manufacturer;
     Spinner spinner_model;
     Spinner spinner_constructionyear;
@@ -61,6 +62,20 @@ public class MainActivity extends ActionBarActivity {
             }
 
         });
+
+        spinner_constructionyear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String result = spinner_constructionyear.getItemAtPosition(position).toString();
+                Log.d("Accuracy", "Listener aktiv");
+                loadSpinnerhorsepower(result);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
 
@@ -87,8 +102,16 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void loadSpinnerhorsepower(String search_word){
+        List<String> list = db.gethorsepower(search_word);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_horsepower.setAdapter(dataAdapter);
+
+    }
+
     public void loadSpinnerconstructionyear(String search_word){
-        MySQLiteHelper db = new MySQLiteHelper(this);
         List<String> list = db.getconstructionyear(search_word);
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -96,7 +119,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void loadSpinnerModel(String search_word){
-        MySQLiteHelper db = new MySQLiteHelper(this);
         List<String> list = db.getModels(search_word);
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -104,7 +126,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void loadSpinnerManufacturer(){
-        MySQLiteHelper db = new MySQLiteHelper(this);
         List<String> list = db.getManufacturers();
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

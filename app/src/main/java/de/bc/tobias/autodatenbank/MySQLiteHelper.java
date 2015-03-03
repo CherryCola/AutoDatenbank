@@ -67,6 +67,23 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     }
 
+    public List<String> gethorsepower(String search_word){
+        ArrayList<String> gethorsepowers = new ArrayList<String>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor result = db.query(false,TABLE_CARS,new String[]{COLUMN_HORSEPOWER}, COLUMN_CONSTRUCTIONYEAR + "= ?",
+                new String[]{search_word},
+                null,null,null,null);
+
+        while(result.moveToNext()){
+            gethorsepowers.add(new String(result.getString(0)));
+            System.out.println(result.getString(0));
+        }
+        result.close();
+        return gethorsepowers;
+    }
+
     public List<String> getconstructionyear(String search_word){
         ArrayList<String> constructionyears = new ArrayList<String>();
 
