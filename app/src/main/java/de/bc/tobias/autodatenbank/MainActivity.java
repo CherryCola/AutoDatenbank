@@ -78,7 +78,7 @@ public class MainActivity extends ActionBarActivity {
         });
     }
 
-    public void onClickAddCar (View button) {
+    public void onClickShowCar (View button) {
 
     }
 
