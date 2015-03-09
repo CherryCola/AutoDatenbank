@@ -12,7 +12,9 @@ import java.util.List;
 
 /**
  * Created by Tobias on 27.02.2015.
+ *Test
  */
+
 public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String TABLE_CARS = "cars";
     public static final String COLUMN_ID = "id";
@@ -20,17 +22,38 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_MODEL = "model";
     public static final String COLUMN_CONSTRUCTIONYEAR = "constructionyear";
     public static final String COLUMN_HORSEPOWER = "horsepower";
+    public static final String COLUMN_FUEL_TYPE="fuel_type";
+    public static final String COLUMN_GEARBOX="gearbox";
+    public static final String COLUMN_TYPE_OF_DRIVE="type_of_drive";
+    public static final String COLUMN_TARE_WEIGHT="tare_weight";
+    public static final String COLUMN_ACCELERATION="acceleration";
+    public static final String COLUMN_INTERNAL_NAME="internal_name";
+    public static final String COLUMN_TOP_SPEED="top_speed";
+    public static final String COLUMN_FUEL_CONSUMPTION="fuel_consumption";
+    public static final String COLUMN_TORQUE="torque";
 
     // Erstellt die Datenbank
     private static final String DATABASE_NAME = "cars.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
 
     // Erstellt die Tabelle
     private static final String DATABASE_CREATE = "create table "
-            + TABLE_CARS + "(" + COLUMN_ID
-            + " integer primary key autoincrement, " + COLUMN_MANUFACTURER
-            + " string, " + COLUMN_MODEL + " string, " + COLUMN_CONSTRUCTIONYEAR
-            + " integer, " + COLUMN_HORSEPOWER + " integer);";
+            + TABLE_CARS + "("
+            + COLUMN_ID + " integer primary key autoincrement, "
+            + COLUMN_MANUFACTURER + " string, "
+            + COLUMN_MODEL + " string, "
+            + COLUMN_CONSTRUCTIONYEAR + " integer, "
+            + COLUMN_HORSEPOWER + " integer, "
+            + COLUMN_FUEL_TYPE + " string, "
+            + COLUMN_GEARBOX + " string, "
+            + COLUMN_TYPE_OF_DRIVE + " string, "
+            + COLUMN_TARE_WEIGHT + " integer, "
+            + COLUMN_ACCELERATION + " float, "
+            + COLUMN_INTERNAL_NAME + " string, "
+            + COLUMN_TOP_SPEED + " float, "
+            + COLUMN_FUEL_CONSUMPTION + "float, "
+            + COLUMN_TORQUE + " integer"
+            + " );";
 
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -58,7 +81,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                 null, null, null, null, null);
         //Write the result in Object car and return it
         while(result.moveToNext()){
-            manufacturers.add(new String(result.getString(0)));
+            manufacturers.add(result.getString(0));
             System.out.println(result.getString(0));
             Log.d("Accuracy", "fährt");
         }
@@ -77,7 +100,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                 null,null,null,null);
 
         while(result.moveToNext()){
-            gethorsepowers.add(new String(result.getString(0)));
+            gethorsepowers.add(result.getString(0));
             System.out.println(result.getString(0));
         }
         result.close();
@@ -94,7 +117,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                 null,null,null,null);
 
         while(result.moveToNext()){
-            constructionyears.add(new String(result.getString(0)));
+            constructionyears.add(result.getString(0));
             System.out.println(result.getString(0));
         }
         result.close();
@@ -111,7 +134,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                 null,null,null,null);
 
         while(result.moveToNext()){
-            models.add(new String(result.getString(0)));
+            models.add(result.getString(0));
             System.out.println(result.getString(0));
         }
         result.close();
